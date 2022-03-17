@@ -11,7 +11,7 @@ import Kingfisher
 class CurrentViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet var viewScreen: UIView!
-    @IBOutlet weak var citLabel: UILabel!
+    @IBOutlet weak var cityLabel: UILabel!
     @IBOutlet weak var tempData: UILabel!
     @IBOutlet weak var tempLabel: UILabel!
     @IBOutlet weak var humidityLabel: UILabel!
@@ -46,50 +46,58 @@ class CurrentViewController: UIViewController, UITextFieldDelegate {
         hideKeyboardWhenTappedAround()
         searchTextField.delegate = self
         searchTextField.clearButtonMode = .whileEditing
-        getCurrentWeather(self.city)
+        self.getCurrentWeather(self.city)
         self.setView()
        
-        
-        
     }
     
     func setView(){
+        //set font and color
         self.titleLabel.text = "Weather"
         self.titleLabel.font = UIFont(name: "Montserrat Black", size: 45)
       
+        self.rightPageButton.setImage(UIImage(systemName: "arrow.right"), for: .normal)
         self.rightPageButton.tintColor = UIColor(named: "buttonTemp")
         self.rightPageButton.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
 
-        self.searchButton.setTitle("Search", for: .normal)
-        self.searchButton.setTitleColor(UIColor.white, for: .normal)
-        self.searchButton.clipsToBounds = true
-        self.searchButton.backgroundColor = UIColor(named: "buttonTemp")
-        self.searchButton.layer.cornerRadius = self.searchButton.frame.size.height/2
-
-        self.tempLabel.text = "Temperature"
-        self.humidityLabel.text = "Humidity"
-      
-        self.changTampButton.clipsToBounds = true
         self.changTampButton.setTitle("°C", for: .normal)
         self.changTampButton.backgroundColor = UIColor(named: "buttonTemp")
         self.changTampButton.setTitleColor(UIColor.white, for: .normal)
         self.changTampButton.layer.cornerRadius = self.changTampButton.frame.size.height/2
-        
-        self.tempLabel.font = UIFont(name: "Montserrat Medium", size: 20)
-        self.humidityLabel.font = UIFont(name: "Montserrat Medium", size: 20)
+        self.changTampButton.clipsToBounds = true
+
         self.searchTextField.placeholder = "Ex. London"
         self.searchTextField.font = UIFont(name: "Montserrat Light", size: 18)
-        self.citLabel.font = UIFont(name: "Montserrat Bold", size: 30)
+        
+        self.searchButton.setTitle("Search", for: .normal)
+        self.searchButton.setTitleColor(UIColor.white, for: .normal)
+        self.searchButton.backgroundColor = UIColor(named: "buttonTemp")
+        self.searchButton.layer.cornerRadius = self.searchButton.frame.size.height/2
+        self.searchButton.clipsToBounds = true
+
+
+        self.cityLabel.font = UIFont(name: "Montserrat Bold", size: 30)
+        self.dateLabel.font = UIFont(name: "Montserrat Light", size: 20)
+        
+// 
+//        self.imageWeather.layer.borderColor = UIColor(named: "BorderImg")?.cgColor
+//        self.imageWeather.layer.borderWidth = 3
+//        self.imageWeather.layer.cornerRadius = self.imageWeather.frame.height / 2
+//        self.imageWeather.clipsToBounds = true
+        
+        self.tempLabel.text = "Temperature"
+        self.humidityLabel.text = "Humidity"
+        self.tempLabel.font = UIFont(name: "Montserrat Medium", size: 20)
+        self.humidityLabel.font = UIFont(name: "Montserrat Medium", size: 20)
+        self.dateLabel.font = UIFont(name: "Montserrat Light", size: 20)
+        self.weatherStatus.font = UIFont(name: "Montserrat Bold", size: 22)
+        self.descripWeatherLabel.font = UIFont(name: "Montserrat Light", size: 18)
         self.tempData.font = UIFont(name: "Montserrat Medium", size: 25)
         self.humidityData.font = UIFont(name: "Montserrat Medium", size: 25)
-        self.descripWeatherLabel.font = UIFont(name: "Montserrat Light", size: 18)
-        self.weatherStatus.font = UIFont(name: "Montserrat Bold", size: 22)
-        self.dateLabel.font = UIFont(name: "Montserrat Light", size: 20)
     }
+    
     override func viewWillAppear(_ animated: Bool) {
-       
         setGradientBackground()
-        
         super.viewWillAppear(animated)
     }
     
@@ -110,21 +118,22 @@ class CurrentViewController: UIViewController, UITextFieldDelegate {
             self.weatherItem = data
             
             if self.weatherItem.cod == 200 {
-            self.idIcon = self.weatherItem.weather?[0].icon ?? ""
-
-            self.getIcon(self.idIcon)
-                self.weatherStatus.text = "\(self.weatherItem.weather?[0].main ?? "")"
-            self.temp = Int((self.weatherItem.main?.temp ?? 0.0) - 273.15)
-            self.citLabel.text = "\(self.weatherItem.name ?? "")"
-            self.tempData.text = "\(self.temp)°C"
+                self.idIcon = self.weatherItem.weather?[0].icon ?? ""
+                self.getIcon(self.idIcon)
+                
+                self.city = "\(self.weatherItem.name ?? "")"
+                self.cityLabel.text = self.city
                 self.descripWeatherLabel.text = "\(self.weatherItem.weather?[0].description ?? "")"
-            self.humidityData.text = "\(self.weatherItem.main?.humidity ?? 0)%"
-    
+                
                 self.dateFormatter.locale = Locale(identifier: "en")
                 self.dateFormatter.dateFormat = "EEEE d MMMM yyyy"
                 self.dateCurrent = self.dateFormatter.string(from: self.date)
                 self.dateLabel.text = self.dateCurrent
                 
+                self.weatherStatus.text = "\(self.weatherItem.weather?[0].main ?? "")"
+                self.temp = Int((self.weatherItem.main?.temp ?? 0.0) - 273.15)
+                self.tempData.text = "\(self.temp)°C"
+                self.humidityData.text = "\(self.weatherItem.main?.humidity ?? 0)%"
             } else {
                 self.showToast(message: "ไม่พบข้อมูล", seconds: 3.0)
             }

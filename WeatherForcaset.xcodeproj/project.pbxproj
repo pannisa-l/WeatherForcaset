@@ -180,6 +180,15 @@
 			path = cell;
 			sourceTree = "<group>";
 		};
+		0F403F5727E2E8B200BB3E84 /* Help */ = {
+			isa = PBXGroup;
+			children = (
+				0F2B89B927DFA59E00F374FC /* Network.swift */,
+				0F2B89C527E0D67600F374FC /* Extension.swift */,
+			);
+			path = Help;
+			sourceTree = "<group>";
+		};
 		0FAE1C0C27DF619500285357 = {
 			isa = PBXGroup;
 			children = (
@@ -205,6 +214,7 @@
 		0FAE1C1727DF619500285357 /* WeatherForcaset */ = {
 			isa = PBXGroup;
 			children = (
+				0F403F5727E2E8B200BB3E84 /* Help */,
 				0F403F4F27E23ACF00BB3E84 /* CurrentWeather */,
 				0F403F4E27E23A8500BB3E84 /* FivedayForecast */,
 				0F403F4127E0FCA800BB3E84 /* Font */,
@@ -212,8 +222,6 @@
 				0F2B89C327E0C2A700F374FC /* Model */,
 				0FAE1C1827DF619500285357 /* AppDelegate.swift */,
 				0FAE1C1A27DF619500285357 /* SceneDelegate.swift */,
-				0F2B89B927DFA59E00F374FC /* Network.swift */,
-				0F2B89C527E0D67600F374FC /* Extension.swift */,
 				0FAE1C2127DF619700285357 /* Assets.xcassets */,
 				0FAE1C2327DF619700285357 /* LaunchScreen.storyboard */,
 				0FAE1C2627DF619700285357 /* Info.plist */,

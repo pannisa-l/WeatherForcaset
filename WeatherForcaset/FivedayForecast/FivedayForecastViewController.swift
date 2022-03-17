@@ -24,42 +24,21 @@ class FivedayForecastViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        self.setBar()
-        self.navigationItem.title = "5-days forecast"
-        let attributes = [NSAttributedString.Key.font: UIFont(name: "Montserrat Bold", size: 20)!]
-        UINavigationBar.appearance().titleTextAttributes = attributes
+       
         self.setBar()
-        print("date current \(dateCurrent)")
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.tableView.separatorStyle = .none
         self.tableView.showsVerticalScrollIndicator = false
         self.tableView.reloadData()
-        
         self.loadFiveday(self.city)
-        
-        cityLabel.text = self.city
-        cityLabel.font = UIFont(name: "Montserrat Black", size: 25)
-        self.timeCurrent.text = self.dateCurrent
-        timeCurrent.font = UIFont(name: "Montserrat Thin", size: 15)
+        self.setView()
+       
     }
     
     override func viewWillAppear(_ animated: Bool) {
-       
         setGradientBackground()
-        
         super.viewWillAppear(animated)
-    }
-    
-    func loadFiveday(_ city: String){
-       
-        viewmodel.loadFivedayforecast(city, completeHandle: { (data) in
-            self.fivedayForecast = data
-            print("five \(self.fivedayForecast.count)")
-            self.tableView.reloadData()
-
-        })
-        
     }
     
     func setGradientBackground() {
@@ -75,7 +54,11 @@ class FivedayForecastViewController: UIViewController {
     }
     
     private func setBar(){
-
+        self.navigationItem.title = "5-days forecast"
+        let attributes = [NSAttributedString.Key.font: UIFont(name: "Montserrat Bold", size: 20)!]
+        UINavigationBar.appearance().titleTextAttributes = attributes
+        
+        //back button
         let backImage = UIImage(systemName: "arrow.left")
         let view = UIView(frame: CGRect(x: 0, y: 0, width: 25, height: 50))
 
@@ -90,11 +73,11 @@ class FivedayForecastViewController: UIViewController {
     }
 
     @objc func back() {
-//        self.dismiss(animated: true, completion: nil)
         DispatchQueue.main.asyncAfter(deadline: .now()+0.3, execute: {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let vcCurrent = storyboard.instantiateViewController(withIdentifier: "CurrentViewController") as! CurrentViewController
             let currentViewController = UINavigationController.init(rootViewController: vcCurrent)
+            vcCurrent.city = self.city
             let transition = CATransition()
             transition.type = CATransitionType.push
             transition.subtype = CATransitionSubtype.fromLeft
@@ -103,14 +86,32 @@ class FivedayForecastViewController: UIViewController {
             currentViewController.modalPresentationStyle = .fullScreen
             self.present(currentViewController, animated: false, completion: nil)
         })
-
     }
+    
+    func loadFiveday(_ city: String){
+       
+        viewmodel.loadFivedayforecast(city, completeHandle: { (data) in
+            self.fivedayForecast = data
+            print("five \(self.fivedayForecast.count)")
+            self.tableView.reloadData()
+        })
+        
+    }
+    
+   
+    
+    func setView(){
+        cityLabel.text = self.city
+        cityLabel.font = UIFont(name: "Montserrat Black", size: 25)
+        self.timeCurrent.text = self.dateCurrent
+        timeCurrent.font = UIFont(name: "Montserrat Thin", size: 15)
+    }
+  
 
 }
 extension FivedayForecastViewController : UITableViewDataSource,UITableViewDelegate {
     
    
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.fivedayForecast.count
     }
