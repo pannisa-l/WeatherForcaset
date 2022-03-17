@@ -48,6 +48,16 @@ class CurrentViewController: UIViewController, UITextFieldDelegate {
         searchTextField.clearButtonMode = .whileEditing
         self.getCurrentWeather(self.city)
         self.setView()
+        
+        for family in UIFont.familyNames {
+
+            let sName: String = family as String
+            print("family: \(sName)")
+                    
+            for name in UIFont.fontNames(forFamilyName: sName) {
+                print("name: \(name as String)")
+            }
+        }
     }
     
     func setView(){
@@ -59,7 +69,7 @@ class CurrentViewController: UIViewController, UITextFieldDelegate {
         self.rightPageButton.tintColor = UIColor(named: "buttonTemp")
         self.rightPageButton.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
 
-        self.changTampButton.setTitle("°C", for: .normal)
+        self.changTampButton.setTitle("°F", for: .normal)
         self.changTampButton.backgroundColor = UIColor(named: "buttonTemp")
         self.changTampButton.setTitleColor(UIColor.white, for: .normal)
         self.changTampButton.layer.cornerRadius = self.changTampButton.frame.size.height/2
@@ -71,7 +81,8 @@ class CurrentViewController: UIViewController, UITextFieldDelegate {
         self.searchButton.setTitle("Search", for: .normal)
         self.searchButton.setTitleColor(UIColor.white, for: .normal)
         self.searchButton.backgroundColor = UIColor(named: "buttonTemp")
-        self.searchButton.layer.cornerRadius = self.searchButton.frame.size.height/2
+        self.searchButton.layer.cornerRadius = self.searchButton.frame.size.height/3
+        
         self.searchButton.clipsToBounds = true
 
 
@@ -150,13 +161,13 @@ class CurrentViewController: UIViewController, UITextFieldDelegate {
         let tempChangButton = Int((self.temp*9)/5 + 32)
         self.tempData.text = "\(tempChangButton)°F"
             self.temp = tempChangButton
-            self.changTampButton.setTitle("°F", for: .normal)
+            self.changTampButton.setTitle("°C", for: .normal)
         }else{
             self.celsius = true
             let tempChangButton = Int((self.temp - 32)*5/9)
             self.tempData.text = "\(tempChangButton)°C"
             self.temp = tempChangButton
-            self.changTampButton.setTitle("°C", for: .normal)
+            self.changTampButton.setTitle("°F", for: .normal)
         }
     }
 

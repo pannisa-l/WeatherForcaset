@@ -17,6 +17,21 @@
 		0F403F5127E23B1300BB3E84 /* FivedayForecastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F403F5027E23B1300BB3E84 /* FivedayForecastViewController.swift */; };
 		0F403F5327E23B3E00BB3E84 /* FivedayForecast.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F403F5227E23B3E00BB3E84 /* FivedayForecast.storyboard */; };
 		0F403F5627E23B8D00BB3E84 /* FivedayForecastTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F403F5527E23B8D00BB3E84 /* FivedayForecastTableViewCell.swift */; };
+		0F403F5D27E308B800BB3E84 /* Montserrat-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0F403F5A27E2F5C900BB3E84 /* Montserrat-Black.ttf */; };
+		0F403F5E27E308C100BB3E84 /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0F403F5927E2F5C900BB3E84 /* Montserrat-Bold.ttf */; };
+		0F403F5F27E308C300BB3E84 /* Montserrat-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0F403F5B27E2F5C900BB3E84 /* Montserrat-Light.ttf */; };
+		0F403F6027E308C300BB3E84 /* Montserrat-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0F403F5B27E2F5C900BB3E84 /* Montserrat-Light.ttf */; };
+		0F403F6127E308C300BB3E84 /* Montserrat-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0F403F5B27E2F5C900BB3E84 /* Montserrat-Light.ttf */; };
+		0F403F6227E308C500BB3E84 /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0F403F5927E2F5C900BB3E84 /* Montserrat-Bold.ttf */; };
+		0F403F6327E308C500BB3E84 /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0F403F5927E2F5C900BB3E84 /* Montserrat-Bold.ttf */; };
+		0F403F6427E308C800BB3E84 /* Montserrat-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0F403F5A27E2F5C900BB3E84 /* Montserrat-Black.ttf */; };
+		0F403F6527E308C900BB3E84 /* Montserrat-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0F403F5A27E2F5C900BB3E84 /* Montserrat-Black.ttf */; };
+		0F403F6627E308CE00BB3E84 /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0F403F5C27E2F5C900BB3E84 /* Montserrat-Medium.ttf */; };
+		0F403F6727E308CE00BB3E84 /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0F403F5C27E2F5C900BB3E84 /* Montserrat-Medium.ttf */; };
+		0F403F6827E308CE00BB3E84 /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0F403F5C27E2F5C900BB3E84 /* Montserrat-Medium.ttf */; };
+		0F403F6927E308D000BB3E84 /* Montserrat-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0F403F5827E2F5C900BB3E84 /* Montserrat-Thin.ttf */; };
+		0F403F6A27E308D100BB3E84 /* Montserrat-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0F403F5827E2F5C900BB3E84 /* Montserrat-Thin.ttf */; };
+		0F403F6B27E308D100BB3E84 /* Montserrat-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0F403F5827E2F5C900BB3E84 /* Montserrat-Thin.ttf */; };
 		0FAE1C1927DF619500285357 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FAE1C1827DF619500285357 /* AppDelegate.swift */; };
 		0FAE1C1B27DF619500285357 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FAE1C1A27DF619500285357 /* SceneDelegate.swift */; };
 		0FAE1C1D27DF619500285357 /* CurrentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FAE1C1C27DF619500285357 /* CurrentViewController.swift */; };
@@ -340,9 +355,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F403F5F27E308C300BB3E84 /* Montserrat-Light.ttf in Resources */,
+				0F403F6927E308D000BB3E84 /* Montserrat-Thin.ttf in Resources */,
 				0F403F5327E23B3E00BB3E84 /* FivedayForecast.storyboard in Resources */,
+				0F403F5D27E308B800BB3E84 /* Montserrat-Black.ttf in Resources */,
+				0F403F5E27E308C100BB3E84 /* Montserrat-Bold.ttf in Resources */,
 				0FAE1C2527DF619700285357 /* LaunchScreen.storyboard in Resources */,
 				0FAE1C2227DF619700285357 /* Assets.xcassets in Resources */,
+				0F403F6627E308CE00BB3E84 /* Montserrat-Medium.ttf in Resources */,
 				0FAE1C2027DF619500285357 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -351,6 +371,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F403F6A27E308D100BB3E84 /* Montserrat-Thin.ttf in Resources */,
+				0F403F6227E308C500BB3E84 /* Montserrat-Bold.ttf in Resources */,
+				0F403F6027E308C300BB3E84 /* Montserrat-Light.ttf in Resources */,
+				0F403F6727E308CE00BB3E84 /* Montserrat-Medium.ttf in Resources */,
+				0F403F6427E308C800BB3E84 /* Montserrat-Black.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -358,6 +383,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F403F6B27E308D100BB3E84 /* Montserrat-Thin.ttf in Resources */,
+				0F403F6327E308C500BB3E84 /* Montserrat-Bold.ttf in Resources */,
+				0F403F6127E308C300BB3E84 /* Montserrat-Light.ttf in Resources */,
+				0F403F6827E308CE00BB3E84 /* Montserrat-Medium.ttf in Resources */,
+				0F403F6527E308C900BB3E84 /* Montserrat-Black.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

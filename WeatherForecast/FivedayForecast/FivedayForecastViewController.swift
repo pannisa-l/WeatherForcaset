@@ -55,8 +55,8 @@ class FivedayForecastViewController: UIViewController {
     
     private func setBar(){
         self.navigationItem.title = "5-days forecast"
-        let attributes = [NSAttributedString.Key.font: UIFont(name: "Montserrat Bold", size: 20)!]
-        UINavigationBar.appearance().titleTextAttributes = attributes
+        let attributes = [NSAttributedString.Key.font: UIFont(name: "Montserrat Bold", size: 20)]
+        UINavigationBar.appearance().titleTextAttributes = attributes as [NSAttributedString.Key : Any]
         
         //back button
         let backImage = UIImage(systemName: "arrow.left")

@@ -9,7 +9,7 @@ import UIKit
 import Kingfisher
 
 class FivedayForecastTableViewCell: UITableViewCell {
-
+    
     @IBOutlet weak var viewBG: UIView!
     
     @IBOutlet weak var dayLabel: UILabel!
@@ -28,6 +28,7 @@ class FivedayForecastTableViewCell: UITableViewCell {
     
     var index : Int = 0
     var loop : Int = 0
+    var count : Int = 0
     var celsius : Bool = true
     var time : String = ""
     var id : String = ""
@@ -38,14 +39,14 @@ class FivedayForecastTableViewCell: UITableViewCell {
         // Initialization code
         setView()
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         // Configure the view for the selected state
     }
-
+    
     func setView(){
-     
+        
         viewBG.backgroundColor = UIColor.white
         viewBG.clipsToBounds = true
         viewBG.backgroundColor = .white
@@ -68,79 +69,146 @@ class FivedayForecastTableViewCell: UITableViewCell {
         self.temp2.font = UIFont(name: "Montserrat Light", size: 15)
         self.temp3.font = UIFont(name: "Montserrat Light", size: 15)
         self.temp4.font = UIFont(name: "Montserrat Light", size: 15)
-            
+        
     }
     
     func setData(_ data:FivedayForecast,_ celsius: Bool) {
         self.dayLabel.text = data.day
         self.celsius = celsius
+        self.count = data.weatherData.count
         loop = data.weatherData.count - 1
         print("loop \(loop)")
         for _ in 0...loop {
             if self.index <= loop {
-                if self.index == 0 {
-                    let time = "\(data.weatherData[self.index].date ?? "")"
-                    let id = "\(data.weatherData[self.index].icon ?? "")"
-                    let temp = data.weatherData[self.index].temp ?? 0.0
-                    let url = URL(string: "https://openweathermap.org/img/wn/\(id)@4x.png")
-                    
-                    self.dayLabel.text = "\(data.day ?? "")"
-                    self.getTime(date: time,completeHandle: { time in
-                        self.timeSet1.text = time
-                    })
-                    self.imgSet1.kf.setImage(with: url)
-                    self.convertTemp(data: temp, completeHandle: { tempConvert in
-                        self.temp1.text = tempConvert
-                    })
-                    self.index = self.index + 2
-                }
-                else if self.index == 2 {
-                    let time = "\(data.weatherData[self.index].date ?? "")"
-                    let id = "\(data.weatherData[self.index].icon ?? "")"
-                    let url = URL(string: "https://openweathermap.org/img/wn/\(id)@4x.png")
-                    let temp = data.weatherData[self.index].temp ?? 0.0
-
-                    self.dayLabel.text = "\(data.day ?? "")"
-                    self.getTime(date: time,completeHandle: { time in
-                        self.timeSet2.text = time
-                    })
-                    self.imgSet2.kf.setImage(with: url)
-                    self.convertTemp(data: temp, completeHandle: { tempConvert in
-                        self.temp2.text = tempConvert
-                    })
-                    self.index = self.index + 2
-                }
-                else if self.index == 4 {
-                    let time = "\(data.weatherData[self.index].date ?? "")"
-                    let id = "\(data.weatherData[self.index].icon ?? "")"
-                    let url = URL(string: "https://openweathermap.org/img/wn/\(id)@4x.png")
-                    let temp = data.weatherData[self.index].temp ?? 0.0
-
-                    self.dayLabel.text = "\(data.day ?? "")"
-                    self.getTime(date: time,completeHandle: { time in
-                        self.timeSet3.text = time
-                    })
-                    self.imgSet3.kf.setImage(with: url)
-                    self.convertTemp(data: temp, completeHandle: { tempConvert in
-                        self.temp3.text = tempConvert
-                    })
-                    self.index = self.index + 2
-                }
-                else if index == 6 {
-                    let time = "\(data.weatherData[self.index].date ?? "")"
-                    let id = "\(data.weatherData[self.index].icon ?? "")"
-                    let url = URL(string: "https://openweathermap.org/img/wn/\(id)@4x.png")
-                    let temp = data.weatherData[self.index].temp ?? 0.0
-
-                    self.dayLabel.text = "\(data.day ?? "")"
-                    self.getTime(date: time,completeHandle: { time in
-                        self.timeSet4.text = time
-                    })
-                    self.convertTemp(data: temp, completeHandle: { tempConvert in
-                        self.temp4.text = tempConvert
-                    })
-                    self.imgSet4.kf.setImage(with: url)
-                    self.index = self.index + 2
+                if self.count < 8 {
+                    if self.index == 0 {
+                        let time = "\(data.weatherData[self.index + 1].date ?? "")"
+                        let id = "\(data.weatherData[self.index + 1].icon ?? "")"
+                        let temp = data.weatherData[self.index + 1].temp ?? 0.0
+                        let url = URL(string: "https://openweathermap.org/img/wn/\(id)@4x.png")
+                        
+                        self.dayLabel.text = "\(data.day ?? "")"
+                        self.getTime(date: time,completeHandle: { time in
+                            self.timeSet1.text = time
+                        })
+                        self.imgSet1.kf.setImage(with: url)
+                        self.convertTemp(data: temp, completeHandle: { tempConvert in
+                            self.temp1.text = tempConvert
+                        })
+                        self.index = self.index + 2
+                    } else if self.index == 2 {
+                        let time = "\(data.weatherData[self.index].date ?? "")"
+                        let id = "\(data.weatherData[self.index].icon ?? "")"
+                        let url = URL(string: "https://openweathermap.org/img/wn/\(id)@4x.png")
+                        let temp = data.weatherData[self.index].temp ?? 0.0
+                        
+                        self.dayLabel.text = "\(data.day ?? "")"
+                        self.getTime(date: time,completeHandle: { time in
+                            self.timeSet2.text = time
+                        })
+                        self.imgSet2.kf.setImage(with: url)
+                        self.convertTemp(data: temp, completeHandle: { tempConvert in
+                            self.temp2.text = tempConvert
+                        })
+                        self.index = self.index + 1
+                    }
+                    else if self.index == 3 {
+                        let time = "\(data.weatherData[self.index].date ?? "")"
+                        let id = "\(data.weatherData[self.index].icon ?? "")"
+                        let url = URL(string: "https://openweathermap.org/img/wn/\(id)@4x.png")
+                        let temp = data.weatherData[self.index].temp ?? 0.0
+                        
+                        self.dayLabel.text = "\(data.day ?? "")"
+                        self.getTime(date: time,completeHandle: { time in
+                            self.timeSet3.text = time
+                        })
+                        self.imgSet3.kf.setImage(with: url)
+                        self.convertTemp(data: temp, completeHandle: { tempConvert in
+                            self.temp3.text = tempConvert
+                        })
+                        self.index = self.index + 1
+                    }
+                    else if self.index == 4 {
+                        let time = "\(data.weatherData[self.index].date ?? "")"
+                        let id = "\(data.weatherData[self.index].icon ?? "")"
+                        let url = URL(string: "https://openweathermap.org/img/wn/\(id)@4x.png")
+                        let temp = data.weatherData[self.index].temp ?? 0.0
+                        
+                        self.dayLabel.text = "\(data.day ?? "")"
+                        self.getTime(date: time,completeHandle: { time in
+                            self.timeSet4.text = time
+                        })
+                        self.imgSet4.kf.setImage(with: url)
+                        self.convertTemp(data: temp, completeHandle: { tempConvert in
+                            self.temp4.text = tempConvert
+                        })
+                        self.index = self.index + 2
+                    }
+                } else {
+                    if self.index == 0 {
+                        let time = "\(data.weatherData[self.index].date ?? "")"
+                        let id = "\(data.weatherData[self.index].icon ?? "")"
+                        let temp = data.weatherData[self.index].temp ?? 0.0
+                        let url = URL(string: "https://openweathermap.org/img/wn/\(id)@4x.png")
+                        
+                        self.dayLabel.text = "\(data.day ?? "")"
+                        self.getTime(date: time,completeHandle: { time in
+                            self.timeSet1.text = time
+                        })
+                        self.imgSet1.kf.setImage(with: url)
+                        self.convertTemp(data: temp, completeHandle: { tempConvert in
+                            self.temp1.text = tempConvert
+                        })
+                        self.index = self.index + 2
+                    }
+                    else if self.index == 2 {
+                        let time = "\(data.weatherData[self.index].date ?? "")"
+                        let id = "\(data.weatherData[self.index].icon ?? "")"
+                        let url = URL(string: "https://openweathermap.org/img/wn/\(id)@4x.png")
+                        let temp = data.weatherData[self.index].temp ?? 0.0
+                        
+                        self.dayLabel.text = "\(data.day ?? "")"
+                        self.getTime(date: time,completeHandle: { time in
+                            self.timeSet2.text = time
+                        })
+                        self.imgSet2.kf.setImage(with: url)
+                        self.convertTemp(data: temp, completeHandle: { tempConvert in
+                            self.temp2.text = tempConvert
+                        })
+                        self.index = self.index + 2
+                    }
+                    else if self.index == 4 {
+                        let time = "\(data.weatherData[self.index].date ?? "")"
+                        let id = "\(data.weatherData[self.index].icon ?? "")"
+                        let url = URL(string: "https://openweathermap.org/img/wn/\(id)@4x.png")
+                        let temp = data.weatherData[self.index].temp ?? 0.0
+                        
+                        self.dayLabel.text = "\(data.day ?? "")"
+                        self.getTime(date: time,completeHandle: { time in
+                            self.timeSet3.text = time
+                        })
+                        self.imgSet3.kf.setImage(with: url)
+                        self.convertTemp(data: temp, completeHandle: { tempConvert in
+                            self.temp3.text = tempConvert
+                        })
+                        self.index = self.index + 2
+                    }
+                    else if index == 6 {
+                        let id = "\(data.weatherData[self.index].icon ?? "")"
+                        let url = URL(string: "https://openweathermap.org/img/wn/\(id)@4x.png")
+                        let temp = data.weatherData[self.index].temp ?? 0.0
+                        let time = "\(data.weatherData[self.index].date ?? "")"
+                        
+                        self.dayLabel.text = "\(data.day ?? "")"
+                        self.getTime(date: time,completeHandle: { time in
+                            self.timeSet4.text = time
+                        })
+                        self.convertTemp(data: temp, completeHandle: { tempConvert in
+                            self.temp4.text = tempConvert
+                        })
+                        self.imgSet4.kf.setImage(with: url)
+                        self.index = self.index + 2
+                    }
                 }
             } else{
                 if self.temp2.text == "" {
