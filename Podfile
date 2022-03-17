@@ -4,20 +4,10 @@
 target 'WeatherForcaset' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
-
-  # Pods for WeatherForcaset
-
-  target 'WeatherForcasetTests' do
-    inherit! :search_paths
-    # Pods for testing
     pod 'Kingfisher', '~> 4.0'
     pod 'Alamofire'
     pod 'SwiftyJSON'
-    
-  end
+  # Pods for WeatherForcaset
 
-  target 'WeatherForcasetUITests' do
-    # Pods for testing
-  end
 
 end
